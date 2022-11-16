@@ -5,7 +5,7 @@ import { getCode, getNames } from "country-list";
 import chalk from "chalk";
 import ora from "ora";
 
-const country = process.argv[1];
+const country = process.argv[2];
 // const spinner = ora("Loading holiday date").start();
 
 getHoliday();
