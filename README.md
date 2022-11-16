@@ -14,7 +14,12 @@ For example:
 
 It will show:
 
-`2022-04-18 - Easter Monday - Easter Monday 2022-04-25 - Anzac Day - Anzac Day 2022-05-02 - May Day - May Day`
+`
+
+> 2022-04-18 - Easter Monday - Easter Monday
+> 2022-04-25 - Anzac Day - Anzac Day
+> 2022-05-02 - May Day - May Day
+> `
 
 ## how to install it
 
