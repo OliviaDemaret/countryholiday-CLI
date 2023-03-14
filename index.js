@@ -1,33 +1,25 @@
 #!/usr/bin/env node
 
 import axios from "axios";
-import { getCode, getNames } from "country-list";
-import chalk from "chalk";
-import ora from "ora";
+import { getCode } from "country-list";
 
-const country = process.argv[2];
-// const spinner = ora("Loading holiday date").start();
-
-getHoliday();
-
-// setTimeout(() => {
-//   spinner.color = "yellow";
-//   spinner.text = "Loading hol";
-// }, 3000);
-
-async function getHoliday() {
+async function getHoliday(country) {
   try {
+    var date = [];
     const response = await axios.get(
-      `https://date.nager.at/api/v3/publicholidays/${getYear()}/${getCountryCode()}`
+      `https://date.nager.at/api/v3/publicholidays/${getYear()}/${getCode(
+        country
+      )}`
     );
 
     for (let i = 0; i < response.data.length; i++) {
       let data = response.data[i];
-      console.log(`${data.date} - ${data.localName} - ${data.name}`);
+      date.push(`${data.date} - ${data.localName} - ${data.name}`);
     }
   } catch (error) {
     console.error(error);
   }
+  return date;
 }
 
 function getYear() {
@@ -35,10 +27,4 @@ function getYear() {
   return years;
 }
 
-function getCountryCode() {
-  if (typeof getCode(country) == "undefined") {
-    console.log("error");
-  } else {
-    return getCode(country);
-  }
-}
+export default getHoliday;
